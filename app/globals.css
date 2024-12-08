@@ -6,14 +6,20 @@
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 0, 0, 0;
   --background-end-rgb: 0, 0, 0;
+  --accent-color: #ff0000; /* Added explicit accent color */
+  --foreground-color: #ffffff; /* Added explicit foreground color */
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-start-rgb));
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
+  min-height: 100vh;
 }
 
-/* Custom utility classes */
 @layer components {
   .section-padding {
     @apply py-20 px-6 md:px-16;
@@ -32,13 +38,11 @@ body {
   }
 }
 
-/* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Selection color */
 ::selection {
-  background: var(--accent);
-  color: var(--foreground);
+  background-color: var(--accent-color);
+  color: var(--foreground-color);
 }
