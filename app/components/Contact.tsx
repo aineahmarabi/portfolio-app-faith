@@ -29,7 +29,7 @@ export default function Contact() {
       } else {
         alert('Failed to send message. Please try again.')
       }
-    } catch (_error) {
+    } catch {
       alert('Error sending message. Please try again.')
     } finally {
       setIsSubmitting(false)

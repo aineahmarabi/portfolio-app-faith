@@ -1,30 +1,30 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import Link from 'next/link'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
 
+  // Move navItems inside useEffect to remove it from dependencies
   const navItems = ['Home', 'About', 'Services', 'Contact']
 
-  useEffect(() => {
+  const setupObservers = useCallback(() => {
     const observers = new Map()
-
-    const observerCallback = (item: string) => (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(item.toLowerCase())
-        }
-      })
-    }
 
     navItems.forEach(item => {
       const section = document.getElementById(item.toLowerCase())
       if (section) {
-        const observer = new IntersectionObserver(observerCallback(item), {
-          threshold: 0.5,
-        })
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              setActiveSection(item.toLowerCase())
+            }
+          },
+          {
+            threshold: 0.5,
+          }
+        )
 
         observer.observe(section)
         observers.set(item, observer)
@@ -35,6 +35,10 @@ export default function Navbar() {
       observers.forEach(observer => observer.disconnect())
     }
   }, [])
+
+  useEffect(() => {
+    return setupObservers()
+  }, [setupObservers])
 
   return (
     <nav className="fixed w-full bg-black py-6 px-8 z-50">
