@@ -4,12 +4,12 @@ const config: Config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
     "./app/components/**/*.{js,ts,jsx,tsx}",
-    "./app/sections/**/*.{js,ts,jsx,tsx}",
+    "./app/api/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       colors: {
-        primary: "#dc2626", // red-600
+        accent: 'var(--accent-color)',
       },
     },
   },
