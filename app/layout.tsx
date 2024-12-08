@@ -31,7 +31,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${montserrat.className} antialiased`} suppressHydrationWarning={true}>
+      <body className={`${montserrat.className} antialiased bg-black`}>
         <Navbar />
         {children}
         <Footer />
