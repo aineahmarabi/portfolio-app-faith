@@ -135,8 +135,8 @@ export default function About() {
   }
 
   return (
-    <section id="about" className="h-screen bg-black">
-      <div className="h-full px-4 md:px-16 py-10 md:py-20">
+    <section id="about" className="min-h-screen bg-black py-20 md:py-24">
+      <div className="container mx-auto px-4 pt-16">
         <div className="max-w-7xl mx-auto h-full grid md:grid-cols-2 gap-12 md:items-center">
           {/* Image - Hidden on mobile */}
           <div className="hidden md:block relative aspect-square rounded-2xl overflow-hidden">

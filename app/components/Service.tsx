@@ -35,8 +35,8 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="h-screen bg-black">
-      <div className="h-full px-4 md:px-16 py-10 md:py-20">
+    <section id="services" className="min-h-screen bg-black py-20 md:py-24">
+      <div className="container mx-auto px-4 pt-16">
         <div className="max-w-7xl mx-auto h-full flex flex-col">
           {/* Header */}
           <div className="text-center mb-12">

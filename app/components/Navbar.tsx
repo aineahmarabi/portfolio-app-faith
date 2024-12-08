@@ -1,9 +1,40 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('home')
+
+  const navItems = ['Home', 'About', 'Services', 'Contact']
+
+  useEffect(() => {
+    const observers = new Map()
+
+    navItems.forEach(item => {
+      const section = document.getElementById(item.toLowerCase())
+      if (section) {
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              setActiveSection(item.toLowerCase())
+            }
+          },
+          {
+            threshold: 0.5, // Trigger when 50% of the section is visible
+          }
+        )
+
+        observer.observe(section)
+        observers.set(item, observer)
+      }
+    })
+
+    // Cleanup
+    return () => {
+      observers.forEach(observer => observer.disconnect())
+    }
+  }, [])
 
   return (
     <nav className="fixed w-full bg-black py-4 px-6 z-50">
@@ -18,13 +49,22 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8">
-          {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item) => (
+          {navItems.map((item) => (
             <Link
               key={item}
               href={`#${item.toLowerCase()}`}
-              className="text-white hover:text-red-600 transition-colors"
+              className={`text-white hover:text-red-600 transition-colors relative group ${
+                activeSection === item.toLowerCase() ? 'text-red-600' : ''
+              }`}
             >
               {item}
+              <span 
+                className={`absolute bottom-0 left-0 h-0.5 bg-red-600 transition-all duration-300 ease-in-out ${
+                  activeSection === item.toLowerCase() 
+                    ? 'w-full' 
+                    : 'w-0 group-hover:w-full'
+                }`}
+              />
             </Link>
           ))}
         </div>
@@ -62,14 +102,23 @@ export default function Navbar() {
         {isOpen && (
           <div className="absolute top-full left-0 right-0 bg-black md:hidden">
             <div className="flex flex-col items-center py-4 space-y-4">
-              {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item) => (
+              {navItems.map((item) => (
                 <Link
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="text-white hover:text-red-600 transition-colors"
+                  className={`text-white hover:text-red-600 transition-colors relative group ${
+                    activeSection === item.toLowerCase() ? 'text-red-600' : ''
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {item}
+                  <span 
+                    className={`absolute bottom-0 left-0 h-0.5 bg-red-600 transition-all duration-300 ease-in-out ${
+                      activeSection === item.toLowerCase() 
+                        ? 'w-full' 
+                        : 'w-0 group-hover:w-full'
+                    }`}
+                  />
                 </Link>
               ))}
             </div>

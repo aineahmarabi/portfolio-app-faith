@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 export const metadata: Metadata = {
-  title: "Hi! I am Faith Kajuju",
-  description: "Certified Zoho Developer",
+  title: "Faith Kajuju",
+  description: "Zoho Solutions Expert",
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 import { Montserrat } from 'next/font/google'
@@ -29,6 +33,7 @@ export default function RootLayout({
       <body className={`${montserrat.className} antialiased`} suppressHydrationWarning={true}>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   )
