@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 export default function Navbar() {
@@ -11,36 +11,36 @@ export default function Navbar() {
   useEffect(() => {
     const observers = new Map()
 
+    const observerCallback = (item: string) => (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(item.toLowerCase())
+        }
+      })
+    }
+
     navItems.forEach(item => {
       const section = document.getElementById(item.toLowerCase())
       if (section) {
-        const observer = new IntersectionObserver(
-          ([entry]) => {
-            if (entry.isIntersecting) {
-              setActiveSection(item.toLowerCase())
-            }
-          },
-          {
-            threshold: 0.5, // Trigger when 50% of the section is visible
-          }
-        )
+        const observer = new IntersectionObserver(observerCallback(item), {
+          threshold: 0.5,
+        })
 
         observer.observe(section)
         observers.set(item, observer)
       }
     })
 
-    // Cleanup
     return () => {
       observers.forEach(observer => observer.disconnect())
     }
   }, [])
 
   return (
-    <nav className="fixed w-full bg-black py-4 px-6 z-50">
+    <nav className="fixed w-full bg-black py-6 px-8 z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
-        <div className="text-2xl font-bold">
+        <div className="text-2xl font-bold px-2">
           <Link href="/">
             <span className="text-red-600">Faith</span>
             <span className="text-white">Kajuju</span>
@@ -48,12 +48,12 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex space-x-12">
           {navItems.map((item) => (
             <Link
               key={item}
               href={`#${item.toLowerCase()}`}
-              className={`text-white hover:text-red-600 transition-colors relative group ${
+              className={`text-white hover:text-red-600 transition-colors relative group px-3 py-2 ${
                 activeSection === item.toLowerCase() ? 'text-red-600' : ''
               }`}
             >
@@ -106,7 +106,7 @@ export default function Navbar() {
                 <Link
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className={`text-white hover:text-red-600 transition-colors relative group ${
+                  className={`text-white hover:text-red-600 transition-colors relative group px-3 py-2 ${
                     activeSection === item.toLowerCase() ? 'text-red-600' : ''
                   }`}
                   onClick={() => setIsOpen(false)}
