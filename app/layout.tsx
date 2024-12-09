@@ -5,7 +5,7 @@ import Footer from './components/Footer'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: "Faith Kajuju",
+  title: "Hi! I'm Faith Kajuju",
   description: "Zoho Solutions Expert",
   icons: {
     icon: '/favicon.ico',
