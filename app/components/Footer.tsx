@@ -14,7 +14,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="text-red-600 hover:text-red-500 transition-colors"
               >
-                Marabi.tech
+                Aineah Marabi
               </a>
             </p>
           </div>
