@@ -19,7 +19,7 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-20 h-full flex flex-col justify-center max-w-7xl mx-auto px-6 md:px-16">
         <div className="md:w-1/2">
-          <p className="text-xl md:text-2xl mb-4">Zoho Certified Developer</p>
+          <p className="text-xl md:text-2xl mb-4">Zoho Certified Developer/Project Manager</p>
           <h1 className="text-5xl md:text-7xl font-bold mb-4">
             Hi, I&apos;m <span className="text-red-600">Faith</span>
             <br />
