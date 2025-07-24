@@ -156,7 +156,7 @@ export default function About() {
           {/* Image - Hidden on mobile */}
           <div className="hidden md:block relative aspect-square rounded-2xl overflow-hidden">
             <Image
-              src="/var-faith.jpg"
+              src="/Hero.png"
               alt="Faith Kajuju"
               fill
               className="object-cover"

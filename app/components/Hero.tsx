@@ -7,7 +7,7 @@ export default function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 md:left-[60%] z-0">
         <Image
-          src="/var-faith.jpg"
+          src="/Hero.png"
           alt="Faith Kajuju"
           fill
           className="object-cover object-center"
