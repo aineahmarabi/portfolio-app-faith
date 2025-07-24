@@ -22,10 +22,24 @@ export default function About() {
 
   const tabContent: TabContent = {
     Certifications: [
+       {
+          title: 'Zoho Sprints Certified Associate',
+          issuer: 'Zoho',
+          date: 'Issued May 2025',
+          credentialId: '',
+          link: 'https://workdrive.zohoexternal.com/external/729e0886604618beead561d62594b2b729b67d4f8a9bfa1acde71345292f636b'
+        },
+       {
+          title: 'Zoho Project Certified Associate',
+          issuer: 'Zoho',
+          date: 'Issued May 2025',
+          credentialId: '',
+          link: 'https://workdrive.zohoexternal.com/external/729e0886604618beead561d62594b2b729b67d4f8a9bfa1acde71345292f636b'
+        },
         {
           title: 'Zoho CRM Admin Certification',
           issuer: 'Zoho',
-          date: 'Issued Mar 2024 · Expires Mar 2026',
+          date: 'Issued Mar 2024',
           credentialId: '',
           link: 'https://www.pdffiller.com/jsfiller-desk14/?flat_pdf_quality=high&isShareViaLink=1&requestHash=34da3cd1d6b6c636533c1bbcf5bb3ec72cfda7f9f967fec8c44ace382f1be348&lang=en&projectId=1710877425&PAGE_REARRANGE_V2_MVP=true&richTextFormatting=true&isPageRearrangeV2MVP=true&jsf-page-rearrange-v2=true&jsf-redesign-full=true&act-notary-pro-integration=true&isSkipEditorLoadFrequency=true&jsf-desktop-ux-for-tablets=false&jsf-probability-70=true&jsf-socket-io=false&jsf-simplified-modes-iteration-1=false&routeId=4ca84542696e30cec7351f0507aaf66e#c288913557ae4dccab89a2e1b4823dbb'
         },
@@ -50,6 +64,7 @@ export default function About() {
           credentialId: '',
           link: 'https://www.credly.com/badges/f2100210-53df-4f6e-9afa-2448ece76d69?source=linked_in_profile'
         }
+        
       ],
       Skills: [
         { title: 'Zoho Development', desc: 'Expertise in customizing and building applications within the Zoho ecosystem to streamline business operations.' },

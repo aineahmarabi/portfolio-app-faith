@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Hi! I'm Faith Kajuju",
   description: "Zoho Solutions Expert",
   icons: {
-    icon: '/favicon.ico',
+    icon: '/Favicon.ico',
   },
 };
 
