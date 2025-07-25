@@ -56,7 +56,7 @@ export default function Navbar() {
           {navItems.map((item) => (
             <Link
               key={item}
-              href={`#${item.toLowerCase()}`}
+              href={`${item.toLowerCase()}`}
               className={`text-white hover:text-red-600 transition-colors relative group px-3 py-2 ${
                 activeSection === item.toLowerCase() ? 'text-red-600' : ''
               }`}
