@@ -5,13 +5,17 @@ export async function POST(req: Request) {
   try {
     const { name, email, message } = await req.json()
 
+    if (!process.env.EMAIL_PASSWORD) {
+      return NextResponse.json({ message: 'Email service not configured' }, { status: 500 })
+    }
+
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 465,
       secure: true,
       auth: {
         user: "kajujufaith55@gmail.com",
-        pass: process.env.EMAIL_PASSWORD, // We'll set this up in the next step
+        pass: process.env.EMAIL_PASSWORD,
       }
     })
 
@@ -38,6 +42,14 @@ export async function POST(req: Request) {
               <td style="padding: 8px; border-bottom: 1px solid #ddd;">${message}</td>
             </tr>
           </table>
+
+          <p style="margin-top: 30px; font-size: 14px; color: #888; text-align: center;">
+            — This message was sent from your portfolio website —
+            <br />
+            <a href="https://www.faithkajuju.com/" style="color: #960509; text-decoration: none;" target="_blank">
+              www.faithkajuju.com
+            </a>
+          </p>
         </div>
       `,
     }
